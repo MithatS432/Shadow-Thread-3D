@@ -2569,7 +2569,7 @@ Transform:
   m_GameObject: {fileID: 86186318}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1005, y: 0, z: -960}
+  m_LocalPosition: {x: 1005, y: 0, z: -999.8}
   m_LocalScale: {x: 100, y: 1, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2620,7 +2620,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 16644a59b553ca049af5934af42bb1ee, type: 2}
+  - {fileID: 2100000, guid: 2e2f8ac2d57e5344197f19949b3bc72b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9682,7 +9682,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 100
+  far clip plane: 500
   field of view: 60.000004
   orthographic: 0
   orthographic size: 5
@@ -19055,6 +19055,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6948152455298458427, guid: 280ccf0a74fd5d64496fd47f9767be70, type: 3}
   m_PrefabInstance: {fileID: 681956781}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &683248143
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 683248144}
+  - component: {fileID: 683248145}
+  m_Layer: 0
+  m_Name: VFXManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &683248144
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683248143}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.246278, y: 0.9725276, z: 12.300585}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &683248145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683248143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbc654d4995f9b0448eabe7dce2dfeeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allParticles: []
+  postProcessVolume: {fileID: 832575518}
+  controlFog: 1
 --- !u!1001 &684571296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28479,8 +28526,8 @@ Transform:
   m_GameObject: {fileID: 1064294644}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1005, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 1, z: 100}
+  m_LocalPosition: {x: 1032, y: 0, z: 31}
+  m_LocalScale: {x: 105.659996, y: 1.0566, z: 105.659996}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1667757410}
@@ -45622,7 +45669,7 @@ Transform:
   m_GameObject: {fileID: 1723552519}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 40}
   m_LocalScale: {x: 100, y: 1, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45673,7 +45720,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 16644a59b553ca049af5934af42bb1ee, type: 2}
+  - {fileID: 2100000, guid: c81638b3753872e499b7d86a071b6e32, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -50391,6 +50438,8 @@ MonoBehaviour:
   cursorHotspot: {x: 0, y: 0}
   uiAudioSource: {fileID: 1969199314}
   clickSound: {fileID: 8300000, guid: 201a5f3178fec534d84812272b4564ea, type: 3}
+  soundFXToggle: {fileID: 752327256}
+  visualFXToggle: {fileID: 382102318}
 --- !u!82 &1969199314
 AudioSource:
   m_ObjectHideFlags: 0
@@ -53736,7 +53785,7 @@ PrefabInstance:
     - target: {fileID: 579254569555909933, guid: d88978ef13eeb2f4e8ca1137d3924b9a, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: d3f56289d53da0747863e6419f9e0a90, type: 2}
+      objectReference: {fileID: 2100000, guid: 2e2f8ac2d57e5344197f19949b3bc72b, type: 2}
     - target: {fileID: 4865378218708837789, guid: d88978ef13eeb2f4e8ca1137d3924b9a, type: 3}
       propertyPath: m_Name
       value: homeBig (5)
@@ -55801,6 +55850,7 @@ SceneRoots:
   - {fileID: 1174018049}
   - {fileID: 410087041}
   - {fileID: 832575519}
+  - {fileID: 683248144}
   - {fileID: 2069512569}
   - {fileID: 1969199312}
   - {fileID: 1077017843}

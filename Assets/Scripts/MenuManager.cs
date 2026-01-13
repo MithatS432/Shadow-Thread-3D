@@ -18,10 +18,39 @@ public class MenuManager : MonoBehaviour
 
     bool isPaused = false;
 
+
+    [Header("Settings")]
+    public Toggle soundFXToggle;
+    public Toggle visualFXToggle;
+
+
     void Start()
     {
         ResumeGame();
+
+        if (soundFXToggle != null)
+        {
+            soundFXToggle.isOn = AudioListener.volume > 0f;
+            soundFXToggle.onValueChanged.AddListener(OnSoundToggleChanged);
+        }
+        if (visualFXToggle != null)
+        {
+            visualFXToggle.isOn = true;
+            visualFXToggle.onValueChanged.AddListener(OnVisualFXToggleChanged);
+        }
+
     }
+    public void OnSoundToggleChanged(bool isOn)
+    {
+        AudioListener.volume = isOn ? 1f : 0f;
+    }
+    public void OnVisualFXToggleChanged(bool isOn)
+    {
+        if (VFXManager.Instance != null)
+            VFXManager.Instance.SetVFX(isOn);
+    }
+
+
 
     void Update()
     {
