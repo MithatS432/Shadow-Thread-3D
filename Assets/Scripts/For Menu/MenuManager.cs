@@ -7,6 +7,7 @@ public class MenuManager : MonoBehaviour
     public GameObject stopMenu;
     public GameObject mainButtons;
     public GameObject optionsPanel;
+    public Image crosshairImage;
 
     [Header("Cursor")]
     public Texture2D menuCursor;
@@ -73,6 +74,7 @@ public class MenuManager : MonoBehaviour
         stopMenu.SetActive(isPaused);
         mainButtons.SetActive(isPaused);
         optionsPanel.SetActive(false);
+        crosshairImage.enabled = !isPaused;
 
         Time.timeScale = isPaused ? 0f : 1f;
         SetCursor(isPaused);
@@ -87,6 +89,7 @@ public class MenuManager : MonoBehaviour
         stopMenu.SetActive(false);
         mainButtons.SetActive(false);
         optionsPanel.SetActive(false);
+        crosshairImage.enabled = true;
 
         Time.timeScale = 1f;
         SetCursor(false);
