@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Other Scripts Reference")]
     public Bow bowScript;
+    public Sword swordScript;
 
 
 
@@ -65,6 +66,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (MenuManager.IsGamePaused)
+            return;
+
         moveX = Input.GetAxis("Horizontal");
         moveZ = Input.GetAxis("Vertical");
 
@@ -134,13 +138,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void SwordAttack()
     {
-        Debug.Log("Sword Attack");
-
-        // Buraya:
-        // - Sword animasyonu
-        // - Raycast ile hit detection
-        // - Damage verme
-        // eklenecek
+        swordScript.HitSword();
     }
     void BowAttack()
     {

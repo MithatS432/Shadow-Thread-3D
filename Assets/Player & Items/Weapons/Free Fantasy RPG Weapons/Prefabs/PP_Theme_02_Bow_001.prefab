@@ -156,4 +156,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 299104432121230754, guid: 96711372ac71aa94d8ef04b40e9445f9, type: 3}
   arrowSpawnPoint: {fileID: 5022847104748623704}
-  shootForce: 35
+  playerCamera: {fileID: 0}
+  shootForce: 45
+  arrowShootSound: {fileID: 8300000, guid: a680188bf5528f84a9fe8b207aa1b0bb, type: 3}

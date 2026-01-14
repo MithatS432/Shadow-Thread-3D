@@ -20,14 +20,19 @@ public class Bow : MonoBehaviour
 
         Vector3 direction = (targetPoint - arrowSpawnPoint.position).normalized;
 
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        rotation *= Quaternion.Euler(90f, 0f, 0f); // <-- KRİTİK SATIR
+
         GameObject arrow = Instantiate(
             arrowPrefab,
             arrowSpawnPoint.position,
-            Quaternion.LookRotation(direction)
+            rotation
         );
 
         Rigidbody rb = arrow.GetComponent<Rigidbody>();
         rb.linearVelocity = direction * shootForce;
+
         AudioSource.PlayClipAtPoint(arrowShootSound, arrowSpawnPoint.position);
     }
+
 }

@@ -23,6 +23,8 @@ public class MenuManager : MonoBehaviour
     [Header("Settings")]
     public Toggle soundFXToggle;
     public Toggle visualFXToggle;
+    public static bool IsGamePaused { get; private set; }
+
 
 
     void Start()
@@ -70,6 +72,7 @@ public class MenuManager : MonoBehaviour
     void TogglePause()
     {
         isPaused = !isPaused;
+        IsGamePaused = isPaused;
 
         stopMenu.SetActive(isPaused);
         mainButtons.SetActive(isPaused);
@@ -85,6 +88,7 @@ public class MenuManager : MonoBehaviour
         PlayClick();
 
         isPaused = false;
+        IsGamePaused = false;
 
         stopMenu.SetActive(false);
         mainButtons.SetActive(false);
@@ -94,6 +98,7 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 1f;
         SetCursor(false);
     }
+
 
     public void OpenOptions()
     {
