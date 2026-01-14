@@ -12,6 +12,14 @@ public class Arrow : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        if (other.gameObject.CompareTag("Animal"))
+        {
+            AnimalStats animalStats = other.gameObject.GetComponent<AnimalStats>();
+            if (animalStats != null)
+            {
+                animalStats.GetDamage(damage);
+            }
+        }
         Destroy(gameObject);
     }
 }

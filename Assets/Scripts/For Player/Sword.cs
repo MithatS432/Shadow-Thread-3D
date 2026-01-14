@@ -4,6 +4,9 @@ public class Sword : MonoBehaviour
 {
     private Animator anim;
 
+    private AudioSource audioSource;
+    public AudioClip swordHitClip;
+
 
     [Header("Combo Settings")]
     public float attackCooldown = 0.4f;
@@ -12,10 +15,12 @@ public class Sword : MonoBehaviour
     private int attackIndex = 0;
     private float lastAttackTime;
     private bool canAttack = true;
+    [SerializeField] private float damage = 30f;
 
     void Start()
     {
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void HitSword()
@@ -27,8 +32,6 @@ public class Sword : MonoBehaviour
         {
             attackIndex = 0;
         }
-
-        anim.SetInteger("AttackIndex", attackIndex);
 
         switch (attackIndex)
         {
@@ -42,6 +45,9 @@ public class Sword : MonoBehaviour
                 anim.SetTrigger("Attack3");
                 break;
         }
+
+        if (swordHitClip != null)
+            audioSource.PlayOneShot(swordHitClip);
 
         attackIndex++;
         if (attackIndex > 2)
@@ -61,5 +67,14 @@ public class Sword : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!canAttack) return;
+
+        if (other.gameObject.CompareTag("Animal"))
+        {
+            AnimalStats animalStats = other.gameObject.GetComponent<AnimalStats>();
+            if (animalStats != null)
+            {
+                animalStats.GetDamage(damage);
+            }
+        }
     }
 }
