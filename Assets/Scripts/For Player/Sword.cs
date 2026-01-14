@@ -17,10 +17,14 @@ public class Sword : MonoBehaviour
     private bool canAttack = true;
     [SerializeField] private float damage = 30f;
 
+    private PlayerMovement player;
+
+
     void Start()
     {
         anim = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        player = GetComponentInParent<PlayerMovement>();
     }
 
     public void HitSword()
@@ -28,40 +32,31 @@ public class Sword : MonoBehaviour
         if (!canAttack)
             return;
 
-        if (Time.time - lastAttackTime > comboResetTime)
-        {
-            attackIndex = 0;
-        }
+        player.SetAttacking(true);
 
-        switch (attackIndex)
-        {
-            case 0:
-                anim.SetTrigger("Attack1");
-                break;
-            case 1:
-                anim.SetTrigger("Attack2");
-                break;
-            case 2:
-                anim.SetTrigger("Attack3");
-                break;
-        }
+        if (Time.time - lastAttackTime > comboResetTime)
+            attackIndex = 0;
+
+        anim.SetTrigger("Attack" + (attackIndex + 1));
 
         if (swordHitClip != null)
             audioSource.PlayOneShot(swordHitClip);
 
-        attackIndex++;
-        if (attackIndex > 2)
-            attackIndex = 0;
-
+        attackIndex = (attackIndex + 1) % 3;
         lastAttackTime = Time.time;
         canAttack = false;
 
         Invoke(nameof(ResetCooldown), attackCooldown);
     }
 
+
     void ResetCooldown()
     {
         canAttack = true;
+    }
+    public void AttackEnd()
+    {
+        player.SetAttacking(false);
     }
 
     private void OnTriggerEnter(Collider other)

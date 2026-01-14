@@ -8,8 +8,16 @@ public class Bow : MonoBehaviour
     public float shootForce = 35f;
     public AudioClip arrowShootSound;
 
-    public void Shoot()
+    public float fireRate = 0.5f;
+    private float lastShootTime = 0f;
+
+    public bool Shoot()
     {
+        if (Time.time - lastShootTime < fireRate)
+            return false;
+
+        lastShootTime = Time.time;
+
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         Vector3 targetPoint;
 
@@ -21,7 +29,7 @@ public class Bow : MonoBehaviour
         Vector3 direction = (targetPoint - arrowSpawnPoint.position).normalized;
 
         Quaternion rotation = Quaternion.LookRotation(direction);
-        rotation *= Quaternion.Euler(90f, 0f, 0f); // <-- KRİTİK SATIR
+        rotation *= Quaternion.Euler(90f, 0f, 0f);
 
         GameObject arrow = Instantiate(
             arrowPrefab,
@@ -32,7 +40,11 @@ public class Bow : MonoBehaviour
         Rigidbody rb = arrow.GetComponent<Rigidbody>();
         rb.linearVelocity = direction * shootForce;
 
-        AudioSource.PlayClipAtPoint(arrowShootSound, arrowSpawnPoint.position);
+        if (arrowShootSound != null)
+            AudioSource.PlayClipAtPoint(arrowShootSound, arrowSpawnPoint.position);
+
+        return true;
     }
+
 
 }

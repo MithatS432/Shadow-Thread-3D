@@ -40,16 +40,30 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded;
     [SerializeField] float extraGravityMultiplier = 2.5f;
 
+    [Header("Ground Check With Raycast")]
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float groundRadius = 0.3f;
+    [SerializeField] private LayerMask groundLayer;
+
+
     [Header("Weapons")]
     public GameObject sword;
     public GameObject bow;
 
     int currentWeapon = 1;
 
+    bool isAttacking = false;
+    bool isChangingWeapon = false;
+
     [Header("Other Scripts Reference")]
     public Bow bowScript;
     public Sword swordScript;
 
+    [Header("Game Over UI")]
+    public GameObject losePanel;
+    public GameObject winPanel;
+    public Button restartButton;
+    public Button quitButton;
 
 
 
@@ -58,16 +72,24 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
 
-        rb.freezeRotation = true;
+        healthText.text = health.ToString();
+        killCountText.text = killCount.ToString();
+        arrowCountText.text = arrowCount.ToString();
 
         EquipSword();
-
     }
+
 
     void Update()
     {
         if (MenuManager.IsGamePaused)
             return;
+
+        if (health <= 0)
+        {
+            GameOver(false);
+            return;
+        }
 
         moveX = Input.GetAxis("Horizontal");
         moveZ = Input.GetAxis("Vertical");
@@ -77,30 +99,44 @@ public class PlayerMovement : MonoBehaviour
 
         HandleMovementState();
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
         }
 
-        if (Input.GetMouseButtonDown(0))
+
+        if (Input.GetMouseButtonDown(0) && !isAttacking && !isChangingWeapon)
         {
             HandleAttack();
         }
+
 
 
         HandleWeaponSwitch();
     }
     void HandleWeaponSwitch()
     {
+        if (isAttacking || isChangingWeapon) return;
+
         if (Input.GetKeyDown(KeyCode.Alpha1) && currentWeapon != 1)
-        {
-            EquipSword();
-        }
+            StartCoroutine(ChangeWeaponRoutine(1));
 
         if (Input.GetKeyDown(KeyCode.Alpha2) && currentWeapon != 2)
-        {
+            StartCoroutine(ChangeWeaponRoutine(2));
+    }
+
+    IEnumerator ChangeWeaponRoutine(int weapon)
+    {
+        isChangingWeapon = true;
+
+        yield return null;
+
+        if (weapon == 1)
+            EquipSword();
+        else
             EquipBow();
-        }
+
+        isChangingWeapon = false;
     }
 
     void EquipSword()
@@ -138,33 +174,58 @@ public class PlayerMovement : MonoBehaviour
     }
     void SwordAttack()
     {
+        if (isAttacking) return;
+
+        isAttacking = true;
         swordScript.HitSword();
     }
+
     void BowAttack()
     {
         if (arrowCount <= 0)
             return;
 
-        bowScript.Shoot();
+        bool shot = bowScript.Shoot();
+
+        if (!shot)
+            return;
 
         arrowCount--;
         arrowCountText.text = arrowCount.ToString();
     }
 
+    public void SetAttacking(bool value)
+    {
+        isAttacking = value;
+    }
+
+
 
 
     private void FixedUpdate()
     {
-        Vector3 moveDir = transform.forward * moveZ + transform.right * moveX;
-        moveDir *= currentSpeed * Time.fixedDeltaTime;
+        CheckGround();
 
-        rb.MovePosition(rb.position + moveDir);
+        Vector3 velocity = transform.forward * moveZ + transform.right * moveX;
+        velocity *= currentSpeed;
+        velocity.y = rb.linearVelocity.y;
 
         if (!isGrounded)
         {
+            Vector3 origin = transform.position + Vector3.up * 0.5f;
+            RaycastHit hit;
+            if (Physics.Raycast(origin, transform.forward, out hit, 0.6f))
+            {
+                velocity.x = 0f;
+                velocity.z = 0f;
+            }
+
             rb.AddForce(Physics.gravity * extraGravityMultiplier, ForceMode.Acceleration);
         }
+
+        rb.linearVelocity = velocity;
     }
+
     void HandleMovementState()
     {
         if (!isGrounded)
@@ -206,9 +267,20 @@ public class PlayerMovement : MonoBehaviour
     }
     void Jump()
     {
+        if (!isGrounded) return;
+
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        audioSource.PlayOneShot(jumpClip);
-        isGrounded = false;
+        if (jumpClip != null)
+            audioSource.PlayOneShot(jumpClip);
+    }
+    void CheckGround()
+    {
+        isGrounded = Physics.CheckSphere(
+            groundCheck.position,
+            groundRadius,
+            groundLayer
+        );
     }
 
     private void LateUpdate()
@@ -222,19 +294,60 @@ public class PlayerMovement : MonoBehaviour
 
         transform.Rotate(Vector3.up * mouseX);
     }
-
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Animal"))
         {
-            isGrounded = true;
+            health -= 20;
+            health = Mathf.Max(health, 0);
+            healthText.text = health.ToString();
         }
     }
-    private void OnCollisionExit(Collision other)
+
+    public void AddKill()
     {
-        if (other.gameObject.CompareTag("Ground"))
+        killCount++;
+        killCountText.text = killCount.ToString();
+        if (killCount >= 50)
         {
-            isGrounded = false;
+            GameOver(true);
         }
     }
+    void GameOver(bool isWin)
+    {
+        Time.timeScale = 0f;
+
+        if (isWin)
+        {
+            winPanel.SetActive(true);
+            restartButton.gameObject.SetActive(true);
+            quitButton.gameObject.SetActive(true);
+
+        }
+
+        else
+        {
+            losePanel.SetActive(true);
+            restartButton.gameObject.SetActive(true);
+            quitButton.gameObject.SetActive(true);
+        }
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
+
 }

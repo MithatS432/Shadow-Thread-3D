@@ -1,9 +1,29 @@
 fileFormatVersion: 2
-guid: ca9069e3ebee85748a1280f7da101b29
+guid: 06ad840c362be9f4a958ef1810412bd1
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Deer
+    second: {fileID: 2100000, guid: 70ec4d966dc486049bf6749b57cc56b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Deer_Fur
+    second: {fileID: 2100000, guid: 6bfe60bc1f9c73c46b039d4dcc15d3db, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Red_Deer
+    second: {fileID: 2800000, guid: 3474683dea2147f47bc9a35871c156dd, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Red_Deer_Fur
+    second: {fileID: 2800000, guid: 7bc37cf89125d1b459d0a0274a238442, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -97,7 +117,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0

@@ -18,6 +18,11 @@ public class AnimalStats : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            PlayerMovement player = Object.FindFirstObjectByType<PlayerMovement>();
+            if (player != null)
+            {
+                player.AddKill();
+            }
         }
     }
 }
