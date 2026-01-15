@@ -1240,6 +1240,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
+  hurtEffects:
+  - {fileID: 3381772053132140057, guid: 673dd86dc0590e84a976de2f8dc35a63, type: 3}
+  - {fileID: 3323387954473017891, guid: 0b912e9003fba894faa88cf964a6fb8a, type: 3}
+  - {fileID: 6042243990886550057, guid: af44cbf49172b8d42b452221c9638892, type: 3}
+  - {fileID: 8866987181904549775, guid: 8c8d8385f96bd054a88a3df780d77bcc, type: 3}
+  hurtClip: {fileID: 8300000, guid: 4925ce21ad2aff04e84cd247176b0a39, type: 3}
+  hurtSoundCooldown: 0.15
 --- !u!82 &1530565864216140439
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1251,7 +1258,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 8e81c0367b50a6344ab6636395f0bd77, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

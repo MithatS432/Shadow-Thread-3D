@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip runClip;
     public AudioClip jumpClip;
     [SerializeField] private AudioClip switchWeaponClip;
+    public AudioClip hurtClip;
 
     [Header("Character UI")]
     public TextMeshProUGUI healthText;
@@ -301,6 +302,8 @@ public class PlayerMovement : MonoBehaviour
             health -= 20;
             health = Mathf.Max(health, 0);
             healthText.text = health.ToString();
+            if (hurtClip != null)
+                audioSource.PlayOneShot(hurtClip);
         }
     }
 

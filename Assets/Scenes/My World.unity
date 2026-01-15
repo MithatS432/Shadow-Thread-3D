@@ -3129,10 +3129,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Horse_001
       objectReference: {fileID: 0}
-    - target: {fileID: 4302357091379198590, guid: dfb23d60f30c46847ba7815aa09e2567, type: 3}
-      propertyPath: m_Resource
-      value: 
-      objectReference: {fileID: 8300000, guid: cff2f1428b37d534380974f452602d37, type: 3}
     - target: {fileID: 4483999970917742656, guid: dfb23d60f30c46847ba7815aa09e2567, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.1383657
@@ -8871,6 +8867,63 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7081157143663831962, guid: 1de61808d8b233d4486d1d84b4717a1a, type: 3}
+--- !u!1001 &295658846
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7225805831062272651, guid: 19f577b5cf7b7f445b9d4d93ba637873, type: 3}
+      propertyPath: m_Name
+      value: Deer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8002026489314402353, guid: 19f577b5cf7b7f445b9d4d93ba637873, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 8002026489314402353, guid: 19f577b5cf7b7f445b9d4d93ba637873, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 8002026489314402353, guid: 19f577b5cf7b7f445b9d4d93ba637873, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.5397558
+      objectReference: {fileID: 0}
+    - target: {fileID: 8002026489314402353, guid: 19f577b5cf7b7f445b9d4d93ba637873, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8002026489314402353, guid: 19f577b5cf7b7f445b9d4d93ba637873, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8002026489314402353, guid: 19f577b5cf7b7f445b9d4d93ba637873, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8002026489314402353, guid: 19f577b5cf7b7f445b9d4d93ba637873, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8002026489314402353, guid: 19f577b5cf7b7f445b9d4d93ba637873, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8002026489314402353, guid: 19f577b5cf7b7f445b9d4d93ba637873, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8002026489314402353, guid: 19f577b5cf7b7f445b9d4d93ba637873, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 19f577b5cf7b7f445b9d4d93ba637873, type: 3}
 --- !u!1001 &297714563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11113,10 +11166,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3169978316970903107, guid: 4ecab060b0afb5d4db61f7f1311b9e24, type: 3}
-      propertyPath: m_Resource
-      value: 
-      objectReference: {fileID: 8300000, guid: 2d08b4b8762eaef4487a5911b9b623c2, type: 3}
     - target: {fileID: 7402009758359158996, guid: 4ecab060b0afb5d4db61f7f1311b9e24, type: 3}
       propertyPath: m_Name
       value: Deer_001
@@ -14602,6 +14651,7 @@ MonoBehaviour:
   runClip: {fileID: 8300000, guid: c3f3efc1106f84643a38bd21f6826aaf, type: 3}
   jumpClip: {fileID: 8300000, guid: 6aeefb601c305f64487cebdfacae5b6c, type: 3}
   switchWeaponClip: {fileID: 8300000, guid: a57ad6e20b94aa34b9ff951c16b59102, type: 3}
+  hurtClip: {fileID: 8300000, guid: b9543694608a293488543908b12eff29, type: 3}
   healthText: {fileID: 1840604302}
   killCountText: {fileID: 1514147430}
   arrowCountText: {fileID: 1381712451}
@@ -53494,10 +53544,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1530565864216140439, guid: 6b0b0b098177a3b439c80991ec9deacc, type: 3}
-      propertyPath: m_Resource
-      value: 
-      objectReference: {fileID: 8300000, guid: 8e81c0367b50a6344ab6636395f0bd77, type: 3}
     - target: {fileID: 8073443194988779917, guid: 6b0b0b098177a3b439c80991ec9deacc, type: 3}
       propertyPath: m_Name
       value: Chicken_001
@@ -58042,3 +58088,4 @@ SceneRoots:
   - {fileID: 102579498}
   - {fileID: 377949895}
   - {fileID: 2006449867}
+  - {fileID: 295658846}
