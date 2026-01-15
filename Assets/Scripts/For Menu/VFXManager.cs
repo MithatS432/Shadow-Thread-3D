@@ -44,4 +44,9 @@ public class VFXManager : MonoBehaviour
         if (controlFog)
             RenderSettings.fog = enabled;
     }
+
+    public bool CanPlayVFX()
+    {
+        return VFXEnabled;
+    }
 }

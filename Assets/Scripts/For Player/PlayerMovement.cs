@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     bool isRunning;
     bool isGrounded;
     [SerializeField] float extraGravityMultiplier = 2.5f;
+    public bool canMove = true;
 
     [Header("Ground Check With Raycast")]
     [SerializeField] private Transform groundCheck;
@@ -83,6 +84,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (!canMove)
+            return;
+
         if (MenuManager.IsGamePaused)
             return;
 
@@ -202,7 +206,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-
+    #region Movement and Camera
     private void FixedUpdate()
     {
         CheckGround();
@@ -295,6 +299,12 @@ public class PlayerMovement : MonoBehaviour
 
         transform.Rotate(Vector3.up * mouseX);
     }
+    #endregion
+
+
+
+
+    #region Health and Game Over System
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Animal"))
@@ -352,5 +362,5 @@ public class PlayerMovement : MonoBehaviour
         Application.Quit();
 #endif
     }
-
+    #endregion
 }
