@@ -4,6 +4,8 @@ using UnityEngine.Rendering;
 public class VFXManager : MonoBehaviour
 {
     public static VFXManager Instance;
+    public bool VFXEnabled { get; private set; } = true;
+
 
     [Header("Particles")]
     public ParticleSystem[] allParticles;
@@ -24,6 +26,8 @@ public class VFXManager : MonoBehaviour
 
     public void SetVFX(bool enabled)
     {
+        VFXEnabled = enabled;
+
         foreach (var ps in allParticles)
         {
             if (ps == null) continue;

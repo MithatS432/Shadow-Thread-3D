@@ -1110,14 +1110,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 331ac0a08e1d71f4fb6b2552e2969158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 120
+  walkSpeed: 4
+  runSpeed: 20
+  detectionRange: 25
+  loseInterestRange: 60
+  wanderRadius: 8
+  obstacleCheckDistance: 2.5
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  wanderChangeTime: 4
+  animator: {fileID: 7922649801668778610}
+  controller: {fileID: 7922649801668778605}
+  player: {fileID: 0}
+  hurtClip: {fileID: 8300000, guid: 4925ce21ad2aff04e84cd247176b0a39, type: 3}
+  deathClip: {fileID: 8300000, guid: 2d08b4b8762eaef4487a5911b9b623c2, type: 3}
   hurtEffects:
   - {fileID: 3381772053132140057, guid: 673dd86dc0590e84a976de2f8dc35a63, type: 3}
   - {fileID: 3323387954473017891, guid: 0b912e9003fba894faa88cf964a6fb8a, type: 3}
   - {fileID: 6042243990886550057, guid: af44cbf49172b8d42b452221c9638892, type: 3}
   - {fileID: 8866987181904549775, guid: 8c8d8385f96bd054a88a3df780d77bcc, type: 3}
-  hurtClip: {fileID: 8300000, guid: 4925ce21ad2aff04e84cd247176b0a39, type: 3}
-  hurtSoundCooldown: 0.15
 --- !u!82 &3169978316970903107
 AudioSource:
   m_ObjectHideFlags: 0

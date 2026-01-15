@@ -654,6 +654,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5977007781930574851}
   m_SourcePrefab: {fileID: 100100000, guid: 06ad840c362be9f4a958ef1810412bd1, type: 3}
+--- !u!95 &4173926899441220171 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 06ad840c362be9f4a958ef1810412bd1, type: 3}
+  m_PrefabInstance: {fileID: 7531797378276558810}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7225805831062272651 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 06ad840c362be9f4a958ef1810412bd1, type: 3}
@@ -793,11 +798,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 331ac0a08e1d71f4fb6b2552e2969158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 125
+  walkSpeed: 6
+  runSpeed: 26
+  detectionRange: 25
+  loseInterestRange: 60
+  wanderRadius: 8
+  obstacleCheckDistance: 2.5
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  wanderChangeTime: 4
+  animator: {fileID: 4173926899441220171}
+  controller: {fileID: 7080393474800811380}
+  player: {fileID: 0}
+  hurtClip: {fileID: 8300000, guid: 4925ce21ad2aff04e84cd247176b0a39, type: 3}
+  deathClip: {fileID: 8300000, guid: 2d08b4b8762eaef4487a5911b9b623c2, type: 3}
   hurtEffects:
   - {fileID: 3381772053132140057, guid: 673dd86dc0590e84a976de2f8dc35a63, type: 3}
   - {fileID: 3323387954473017891, guid: 0b912e9003fba894faa88cf964a6fb8a, type: 3}
   - {fileID: 6042243990886550057, guid: af44cbf49172b8d42b452221c9638892, type: 3}
   - {fileID: 8866987181904549775, guid: 8c8d8385f96bd054a88a3df780d77bcc, type: 3}
-  hurtClip: {fileID: 8300000, guid: 4925ce21ad2aff04e84cd247176b0a39, type: 3}
-  hurtSoundCooldown: 0.15
