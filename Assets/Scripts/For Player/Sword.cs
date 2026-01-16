@@ -27,10 +27,14 @@ public class Sword : MonoBehaviour
         anim = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         player = GetComponentInParent<PlayerMovement>();
+        if (player == null)
+            Debug.LogError("Sword: PlayerMovement parent’ta bulunamadı!");
     }
 
     public void HitSword()
     {
+        if (player == null) return;
+
         if (!canAttack)
             return;
 

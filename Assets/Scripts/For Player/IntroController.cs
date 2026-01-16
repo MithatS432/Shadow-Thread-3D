@@ -4,12 +4,14 @@ using Unity.Cinemachine;
 public class IntroController : MonoBehaviour
 {
     public PlayerMovement player;
+    public GameObject playerRoot;
+
     public CinemachineCamera introCam;
     public CinemachineCamera playerCam;
 
     void Start()
     {
-        player.canMove = false;
+        playerRoot.SetActive(false);
 
         introCam.Priority = 20;
         playerCam.Priority = 0;
@@ -17,8 +19,12 @@ public class IntroController : MonoBehaviour
 
     public void OnIntroFinished()
     {
+        Debug.Log("INTRO BITTI");
+
+        playerRoot.SetActive(true);
+        player.canMove = true;
+
         introCam.Priority = 0;
         playerCam.Priority = 20;
-        player.canMove = true;
     }
 }

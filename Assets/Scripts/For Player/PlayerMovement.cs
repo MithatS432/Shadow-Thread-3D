@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     [Header("Character Stats")]
-    public Camera playerCamera;
+    public Transform cameraTarget;
     float xRotation = 0f;
     private float mouseSensitivity = 250f;
     private float moveSpeed = 10f;
@@ -39,8 +39,11 @@ public class PlayerMovement : MonoBehaviour
     bool isMoving;
     bool isRunning;
     bool isGrounded;
+    private float yaw;
+    private float pitch;
     [SerializeField] float extraGravityMultiplier = 2.5f;
     public bool canMove = true;
+
 
     [Header("Ground Check With Raycast")]
     [SerializeField] private Transform groundCheck;
@@ -290,15 +293,22 @@ public class PlayerMovement : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (!canMove || MenuManager.IsGamePaused)
+            return;
+
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
-        playerCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        yaw += mouseX;
+        pitch -= mouseY;
+        pitch = Mathf.Clamp(pitch, -80f, 80f);
 
-        transform.Rotate(Vector3.up * mouseX);
+        cameraTarget.localRotation = Quaternion.Euler(pitch, 0f, 0f);
+
+        transform.rotation = Quaternion.Euler(0f, yaw, 0f);
     }
+
+
     #endregion
 
 
