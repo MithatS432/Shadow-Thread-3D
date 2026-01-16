@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 3
   runSpeed: 18
-  detectionRange: 16
-  loseInterestRange: 25
+  detectionRange: 50
+  loseInterestRange: 70
   wanderRadius: 10

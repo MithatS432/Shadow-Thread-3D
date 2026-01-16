@@ -36,6 +36,11 @@ public class AnimalStats : MonoBehaviour
 
     void Die()
     {
+        PlayerMovement player = Object.FindFirstObjectByType<PlayerMovement>();
+        if (player != null)
+        {
+            player.AddKill();
+        }
         effects?.PlayDeath();
         Destroy(gameObject);
     }

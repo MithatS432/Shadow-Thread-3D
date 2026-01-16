@@ -15,6 +15,8 @@ public class Sword : MonoBehaviour
     private int attackIndex = 0;
     private float lastAttackTime;
     private bool canAttack = true;
+    private bool canDealDamage;
+
     [SerializeField] private float damage = 30f;
 
     private PlayerMovement player;
@@ -58,10 +60,19 @@ public class Sword : MonoBehaviour
     {
         player.SetAttacking(false);
     }
+    public void EnableDamage()
+    {
+        canDealDamage = true;
+    }
+
+    public void DisableDamage()
+    {
+        canDealDamage = false;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!canAttack) return;
+        if (!canDealDamage) return;
 
         if (other.gameObject.CompareTag("Animal"))
         {

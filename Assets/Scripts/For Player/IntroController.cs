@@ -7,6 +7,14 @@ public class IntroController : MonoBehaviour
     public CinemachineCamera introCam;
     public CinemachineCamera playerCam;
 
+    void Start()
+    {
+        player.canMove = false;
+
+        introCam.Priority = 20;
+        playerCam.Priority = 0;
+    }
+
     public void OnIntroFinished()
     {
         introCam.Priority = 0;

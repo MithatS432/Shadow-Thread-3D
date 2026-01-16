@@ -6,6 +6,8 @@ public class AnimalMovement : MonoBehaviour
     private AnimalStats stats;
     private float yVelocity;
     private Vector3 wanderTarget;
+    public Vector3 CurrentWanderTarget => wanderTarget;
+
 
     void Awake()
     {
@@ -18,13 +20,15 @@ public class AnimalMovement : MonoBehaviour
     {
         Vector3 dir = (wanderTarget - transform.position);
         dir.y = 0;
-
-        if (dir.magnitude < 1f)
-            PickNewWanderTarget();
-
         dir = AvoidObstacle(dir.normalized);
 
         Move(dir, stats.WalkSpeed);
+
+    }
+
+    public bool ReachedTarget(Vector3 target)
+    {
+        return Vector3.Distance(transform.position, target) < 1f;
     }
 
     public void RunAway(Vector3 threatPos)
@@ -36,6 +40,11 @@ public class AnimalMovement : MonoBehaviour
 
         Move(dir, stats.RunSpeed);
     }
+    public void PickNewTarget()
+    {
+        PickNewWanderTarget();
+    }
+
 
     void Move(Vector3 dir, float speed)
     {
