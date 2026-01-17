@@ -63,3 +63,19 @@ c-)Cinemachine used only during intro; disabled from runtime logic afterwards.
 d-)No per-frame object instantiation in gameplay-critical systems.
 
 e-)Audio and VFX triggered event-based, not frame-based.
+
+
+## 📊 Project Images For Graphics
+
+### System & AI Diagram
+![Mermaid Diagram](Images%20For%20Graphics/Mermaid%20Diagrams.png)
+
+### Night Environment
+![Night Scene](Images%20For%20Graphics/Night.png)
+
+### AI Path Visualization
+![Paths](Images%20For%20Graphics/Paths.png)
+
+### Alternative Path Analysis
+![Paths2](Images%20For%20Graphics/Paths2.png)
+
