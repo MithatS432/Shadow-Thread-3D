@@ -212,6 +212,8 @@ public class PlayerMovement : MonoBehaviour
     #region Movement and Camera
     private void FixedUpdate()
     {
+        if (!canMove) return;
+
         CheckGround();
 
         Vector3 velocity = transform.forward * moveZ + transform.right * moveX;
