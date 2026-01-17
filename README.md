@@ -54,12 +54,12 @@ Rendering Characteristics:Forward rendering pathLimited real-time lightsEfficien
 
 Optimization Decisions
 
-FSM-based AI preferred over behavior trees to reduce overhead.
+a-)FSM-based AI preferred over behavior trees to reduce overhead.
 
-CharacterController / Rigidbody usage optimized to avoid unnecessary physics calculations.
+b-)CharacterController / Rigidbody usage optimized to avoid unnecessary physics calculations.
 
-Cinemachine used only during intro; disabled from runtime logic afterwards.
+c-)Cinemachine used only during intro; disabled from runtime logic afterwards.
 
-No per-frame object instantiation in gameplay-critical systems.
+d-)No per-frame object instantiation in gameplay-critical systems.
 
-Audio and VFX triggered event-based, not frame-based.
+e-)Audio and VFX triggered event-based, not frame-based.
