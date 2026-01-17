@@ -7,6 +7,8 @@ public class AnimalMovement : MonoBehaviour
     private float yVelocity;
     private Vector3 wanderTarget;
     public Vector3 CurrentWanderTarget => wanderTarget;
+    float heatmapTimer;
+
 
 
     void Awake()
@@ -14,6 +16,16 @@ public class AnimalMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
         stats = GetComponent<AnimalStats>();
         PickNewWanderTarget();
+    }
+    void Update()
+    {
+        heatmapTimer -= Time.deltaTime;
+
+        if (heatmapTimer <= 0)
+        {
+            AIHeatmap.Instance?.RegisterPosition(transform.position);
+            heatmapTimer = 0.5f;
+        }
     }
 
     public void Wander()
