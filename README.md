@@ -68,14 +68,15 @@ e-)Audio and VFX triggered event-based, not frame-based.
 ## 📊 Project Images For Graphics
 
 ### System & AI Diagram
-![Mermaid Diagram](Images%20For%20Graphics/Mermaid%20Diagrams.png)
+![Mermaid Diagram](Assets/Images%20For%20Graphics/Mermaid%20Diagrams.png)
 
 ### Night Environment
-![Night Scene](Images%20For%20Graphics/Night.png)
+![Night Scene](Assets/Images%20For%20Graphics/Night.png)
 
 ### AI Path Visualization
-![Paths](Images%20For%20Graphics/Paths.png)
+![Paths](Assets/Images%20For%20Graphics/Paths.png)
 
 ### Alternative Path Analysis
-![Paths2](Images%20For%20Graphics/Paths2.png)
+![Paths2](Assets/Images%20For%20Graphics/Paths2.png)
+
 
